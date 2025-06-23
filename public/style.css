@@ -1,0 +1,201 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body, html {
+  height: 100%;
+  background: url('data-modeling.jpg') no-repeat center center/cover;
+}
+#login{
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: url('/xvM0km.jpg') no-repeat center center/cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.button {
+  background: linear-gradient(135deg, #ff6ec4, #7873f5);
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #7873f5, #ff6ec4);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+.alert-success {
+  background-color: #d4edda;
+  border-left: 5px solid #28a745;
+  color: #155724;
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+  font-size: 16px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  box-shadow: 
+  0 0 30px rgba(0, 217, 255, 0.5), 
+  0 0 60px rgba(0, 153, 255, 0.2), 
+  inset 0 0 10px rgba(255, 255, 255, 0.1);
+border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  width: 350px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.toggle-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.toggle-buttons button {
+  padding: 10px 20px;
+  border: none;
+  margin: 0 10px;
+  border-radius: 20px;
+  background: #ddd;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.toggle-buttons button.active {
+  background: #007bff;
+  color: white;
+}
+
+.form {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.form.active {
+  display: block;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group i {
+  position: absolute;
+  top: 14px;
+  left: 10px;
+  color: #333;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 12px 12px 35px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.input-group label {
+  position: absolute;
+  top: 12px;
+  left: 35px;
+  color: #666;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label {
+  top: -10px;
+  left: 30px;
+  font-size: 0.75rem;
+  background: #007bff;
+  color: white;
+  padding: 0 5px;
+  border-radius: 5px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background: #0056b3;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@media screen and (max-width: 400px) {
+  .glass-container {
+    width: 90%;
+    padding: 20px;
+  }
+}
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  background: #2ecc71; /* success by default */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  z-index: 1000;
+}
+
+.toast.error {
+  background: #e74c3c;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}

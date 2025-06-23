@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Files</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url("th (1).jpeg") no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column; 
+    }
+h2 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+      animation: floatText 3s ease-in-out infinite, pulseGlow 2s infinite;
+    }
+
+    @keyframes floatText {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+      }
+      100% {
+        text-shadow: 0 0 20px rgba(0, 255, 255, 1);
+      }
+    }
+
+    #fileTable {
+  margin-top: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+  display: none;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: #fff;
+}
+th, td {
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+th {
+  background: rgba(0, 255, 255, 0.1);
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+td a {
+  color: #00ffff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+td a:hover {
+  color: #00ff99;
+  text-decoration: underline;
+}
+
+    a {
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+    .logout-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: rgba(0, 255, 255, 0.1);
+  color: #00ffff;
+  padding: 10px 20px;
+  border: 1px solid #00ffff;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+.logout-btn:hover {
+  background: rgba(0, 255, 255, 0.25);
+  color: #00ffcc;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+}
+  </style>
+</head>
+<body>
+  <h2><%= username %>,Your Uploaded files </h2>
+  <table>
+    <thead>
+      <tr>
+        <th>File Name</th>
+        <th>Download Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% files.forEach(file => { %>
+        <tr>
+          <td><%= file.name %></td>
+          <td><a href="<%= file.url %>" target="_blank">Download</a></td>
+          <td><button class="delete-btn" onclick="deleteFile('<%= file.name %>')">Delete</button></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <a href="/logout" class="logout-btn">Logout</a>
+
+  <script>
+    function deleteFile(filename) {
+      if (confirm(`Are you sure you want to delete "${filename}"?`)) {
+        fetch(`/delete/${filename}`, {
+          method: 'DELETE'
+        })
+        .then(res => {
+          if (res.ok) {
+            alert("File deleted successfully!");
+            location.reload(); 
+          } else {
+            throw new Error("Failed to delete file.");
+          }
+        })
+        .catch(err => {
+          alert("An error occurred while deleting.");
+          console.error(err);
+        });
+      }
+    }
+  </script>
+</body>
+</html>

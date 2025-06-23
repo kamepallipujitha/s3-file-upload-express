@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url('data-modeling.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .dashboard-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    width: 90%;
+    max-width: 800px;
+    color: white;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    color: white;
+  }
+  
+  th {
+    background: rgba(0, 123, 255, 0.4);
+  }
+  
+  td a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  td a:hover {
+    text-decoration: underline;
+  }
+  
